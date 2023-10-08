@@ -10,8 +10,7 @@ impl syn::visit::Visit<'_> for StdOutputExtractor {
             if ident == "println" || ident == "eprintln" {
                 let lit = node.tokens.to_string();
 
-                let format_string = extract_contents_in_brackets(lit);
-                if let Some(format_string) = format_string {
+                if let Some(format_string) = extract_contents_in_brackets(lit.to_owned()) {
                     println!("Found format string: {}", format_string);
                 }
             }

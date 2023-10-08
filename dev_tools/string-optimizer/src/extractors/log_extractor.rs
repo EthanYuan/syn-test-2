@@ -1,7 +1,33 @@
 use super::extract_contents_in_brackets;
+use crate::types::{Category, Meta, TextInfo};
+use std::path::PathBuf;
+use std::str::FromStr;
+use syn::spanned::Spanned;
 use syn::Macro;
 
-pub struct LogExtractor;
+#[derive(Default)]
+pub struct LogExtractor {
+    list: Vec<TextInfo>,
+    file_path: PathBuf,
+}
+
+impl LogExtractor {
+    pub fn new() -> Self {
+        LogExtractor::default()
+    }
+
+    pub fn reset_analysis_path(&mut self, file_path: &PathBuf) {
+        self.file_path = file_path.to_owned();
+    }
+
+    pub fn add_text_info(&mut self, text_info: TextInfo) {
+        self.list.push(text_info)
+    }
+
+    pub fn get_text_list(&self) -> &[TextInfo] {
+        &self.list
+    }
+}
 
 impl syn::visit::Visit<'_> for LogExtractor {
     fn visit_macro(&mut self, node: &Macro) {
@@ -15,9 +41,14 @@ impl syn::visit::Visit<'_> for LogExtractor {
             {
                 let lit = node.tokens.to_string();
 
-                let format_string = extract_contents_in_brackets(lit);
-                if let Some(format_string) = format_string {
-                    println!("Found format string: {}", format_string);
+                if let Some(text) = extract_contents_in_brackets(lit) {
+                    println!("Found format string: {}", text);
+
+                    let span = node.span();
+                    let code_line = span.start().line;
+                    let category = Category::from_str(ident.to_string().as_str()).unwrap();
+                    let meta = Meta::new(category, self.file_path.to_owned(), code_line);
+                    self.add_text_info(TextInfo::new(text, crate::types::Language::EN, meta));
                 }
             }
         }
