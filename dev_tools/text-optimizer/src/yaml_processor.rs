@@ -1,5 +1,5 @@
 use super::types::TextInfo;
-use std::fs::File;
+use std::{fs::File, path::PathBuf};
 
 // pub fn load_yaml(filename: &str) -> Result<HashMap<String, TextInfo>, serde_yaml::Error> {
 //     let mut file = File::open(filename)?;
@@ -19,8 +19,8 @@ use std::fs::File;
 //     Ok(())
 // }
 
-pub fn save_yaml(filename: &str, data: &[TextInfo]) -> Result<(), MyError> {
-    let file = File::create(filename)?;
+pub fn save_yaml(file: &PathBuf, data: &[TextInfo]) -> Result<(), MyError> {
+    let file = File::create(file)?;
     serde_yaml::to_writer(file, data)?;
     Ok(())
 }

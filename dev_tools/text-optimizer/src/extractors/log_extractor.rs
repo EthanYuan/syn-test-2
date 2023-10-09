@@ -48,7 +48,7 @@ impl syn::visit::Visit<'_> for LogExtractor {
                     let code_line = span.start().line;
                     let category = Category::from_str(ident.to_string().as_str()).unwrap();
                     let meta = Meta::new(category, self.file_path.to_owned(), code_line);
-                    self.add_text_info(TextInfo::new(text, crate::types::Language::EN, meta));
+                    self.add_text_info(TextInfo::new(text, meta));
                 }
             }
         }

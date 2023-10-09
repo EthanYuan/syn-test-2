@@ -1,20 +1,23 @@
-mod extractors;
-mod types;
-mod yaml_processor;
+pub mod clap_extractor;
+pub mod log_extractor;
+pub mod std_output_extractor;
+pub mod thiserror_extractor;
+
+use crate::{yaml_processor::save_yaml, LOG_TEXT_FILE};
+use clap_extractor::ClapExtractor;
+use log_extractor::LogExtractor;
+use std_output_extractor::StdOutputExtractor;
+use thiserror_extractor::ThiserrorExtractor;
 
 use cargo_metadata::MetadataCommand;
-use extractors::{
-    clap_extractor::ClapExtractor, log_extractor::LogExtractor,
-    std_output_extractor::StdOutputExtractor, thiserror_extractor::ThiserrorExtractor,
-};
-use std::{fs, path::Path};
 use syn::visit::visit_file;
-use yaml_processor::save_yaml;
 
-fn main() {
-    // root
-    let project_root = "../../Cargo.toml";
+use std::{
+    fs,
+    path::{Path, PathBuf},
+};
 
+pub fn extract(project_root: PathBuf, output_dir: &PathBuf) {
     // extractors
     let mut log_extractor = LogExtractor::new();
 
@@ -33,10 +36,16 @@ fn main() {
         println!();
     }
 
-    save_yaml("log_text_list.yml", log_extractor.get_text_list()).expect("save yaml");
+    fs::create_dir_all(output_dir).expect("create dir all");
+
+    save_yaml(
+        &output_dir.join(LOG_TEXT_FILE),
+        log_extractor.get_text_list(),
+    )
+    .expect("save yaml");
 }
 
-fn process_rs_files_in_src(src_dir: &Path, log_extractor: &mut LogExtractor) {
+pub fn process_rs_files_in_src(src_dir: &Path, log_extractor: &mut LogExtractor) {
     if let Ok(entries) = fs::read_dir(&src_dir.join("src")) {
         for entry in entries.flatten() {
             if let Some(file_name) = entry.file_name().to_str() {
@@ -66,4 +75,14 @@ fn process_rs_files_in_src(src_dir: &Path, log_extractor: &mut LogExtractor) {
             }
         }
     }
+}
+
+pub fn extract_contents_in_brackets(lit: String) -> Option<String> {
+    if let Some(start) = lit.find('"') {
+        if let Some(end) = lit.rfind('"') {
+            let format_string = &lit[start + 1..end];
+            return Some(format_string.to_string());
+        }
+    }
+    None
 }

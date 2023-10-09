@@ -6,16 +6,14 @@ use std::str::FromStr;
 pub struct TextInfo {
     original: String,
     editable: String,
-    lang: Language,
     metadata: Meta,
 }
 
 impl TextInfo {
-    pub fn new(original: String, lang: Language, metadata: Meta) -> Self {
+    pub fn new(original: String, metadata: Meta) -> Self {
         TextInfo {
             original: original.to_owned(),
             editable: original,
-            lang,
             metadata,
         }
     }
@@ -72,9 +70,4 @@ impl FromStr for Category {
             _ => Err(()),
         }
     }
-}
-
-#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Hash)]
-pub enum Language {
-    EN,
 }

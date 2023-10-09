@@ -15,4 +15,4 @@ members = [
     "crate3",
     "util/crate4"
 ]
-exclude = ["dev_tools/string-optimizer"]
+exclude = ["dev_tools/text-optimizer"]
