@@ -1,32 +1,7 @@
-use super::extract_contents_in_brackets;
+use super::{extract_contents_in_brackets, ThiserrorExtractor};
 use crate::types::{Category, Meta, TextInfo};
-use std::path::PathBuf;
 use syn::Expr::{self, Lit};
 use syn::Lit::Str;
-
-#[derive(Default)]
-pub struct ThiserrorExtractor {
-    list: Vec<TextInfo>,
-    file_path: PathBuf,
-}
-
-impl ThiserrorExtractor {
-    pub fn new() -> Self {
-        ThiserrorExtractor::default()
-    }
-
-    pub fn reset_analysis_path(&mut self, file_path: &PathBuf) {
-        self.file_path = file_path.to_owned();
-    }
-
-    pub fn add_text_info(&mut self, text_info: TextInfo) {
-        self.list.push(text_info)
-    }
-
-    pub fn get_text_list(&self) -> &[TextInfo] {
-        &self.list
-    }
-}
 
 impl syn::visit::Visit<'_> for ThiserrorExtractor {
     fn visit_attribute(&mut self, attr: &syn::Attribute) {
