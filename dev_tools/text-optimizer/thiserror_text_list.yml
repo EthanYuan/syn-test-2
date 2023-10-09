@@ -1,0 +1,28 @@
+- original: data store disconnected
+  editable: data store disconnected
+  metadata:
+    category: ThisError
+    file: /home/ethan/projects/rust/syn-test-2/crate3/src/lib.rs
+    start_line: 3
+    end_line: 3
+- original: the data for key `{0}` is not available
+  editable: the data for key `{0}` is not available
+  metadata:
+    category: ThisError
+    file: /home/ethan/projects/rust/syn-test-2/crate3/src/lib.rs
+    start_line: 5
+    end_line: 5
+- original: invalid header (expected {expected:?}, found {found:?})
+  editable: invalid header (expected {expected:?}, found {found:?})
+  metadata:
+    category: ThisError
+    file: /home/ethan/projects/rust/syn-test-2/crate3/src/lib.rs
+    start_line: 7
+    end_line: 7
+- original: unknown data store error
+  editable: unknown data store error
+  metadata:
+    category: ThisError
+    file: /home/ethan/projects/rust/syn-test-2/crate3/src/lib.rs
+    start_line: 9
+    end_line: 9

@@ -12,6 +12,7 @@ pub const PROJECT_ROOT: &str = "../../Cargo.toml";
 pub const LOG_TEXT_FILE: &str = "log_text_list.yml";
 pub const CLAP_TEXT_FILE: &str = "clap_text_list.yml";
 pub const STD_OUTPUT_TEXT_FILE: &str = "std_output_text_list.yml";
+pub const THISERROR_TEXT_FILE: &str = "thiserror_text_list.yml";
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
