@@ -1,13 +1,16 @@
+mod backfill;
 mod extractors;
 mod types;
 mod yaml_processor;
 
+use backfill::backfill;
 use clap::{Parser, Subcommand};
 use extractors::extract;
 use std::path::PathBuf;
 
 pub const PROJECT_ROOT: &str = "../../Cargo.toml";
 pub const LOG_TEXT_FILE: &str = "log_text_list.yml";
+pub const CLAP_TEXT_FILE: &str = "clap_text_list.yml";
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -40,7 +43,7 @@ fn main() {
             extract(PathBuf::from(PROJECT_ROOT), output_dir);
         }
         Some(Commands::Backfill { input_dir }) => {
-            println!("{:?}", input_dir);
+            backfill(input_dir);
         }
         None => {}
     }

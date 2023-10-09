@@ -45,9 +45,10 @@ impl syn::visit::Visit<'_> for LogExtractor {
                     println!("Found format string: {}", text);
 
                     let span = node.span();
-                    let code_line = span.start().line;
+                    let start_line = span.start().line;
+                    let end_line = span.end().line;
                     let category = Category::from_str(ident.to_string().as_str()).unwrap();
-                    let meta = Meta::new(category, self.file_path.to_owned(), code_line);
+                    let meta = Meta::new(category, self.file_path.to_owned(), start_line, end_line);
                     self.add_text_info(TextInfo::new(text, meta));
                 }
             }

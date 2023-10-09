@@ -17,22 +17,56 @@ impl TextInfo {
             metadata,
         }
     }
+
+    #[allow(dead_code)]
+    pub fn original(&self) -> &str {
+        &self.original
+    }
+
+    #[allow(dead_code)]
+    pub fn editable(&self) -> &str {
+        &self.editable
+    }
+
+    pub fn metadata(&self) -> &Meta {
+        &self.metadata
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct Meta {
     category: Category,
     file: PathBuf,
-    code_line: usize,
+    start_line: usize,
+    end_line: usize,
 }
 
 impl Meta {
-    pub fn new(category: Category, file: PathBuf, code_line: usize) -> Self {
+    pub fn new(category: Category, file: PathBuf, start_line: usize, end_line: usize) -> Self {
         Meta {
             category,
             file,
-            code_line,
+            start_line,
+            end_line,
         }
+    }
+
+    #[allow(dead_code)]
+    pub fn category(&self) -> &Category {
+        &self.category
+    }
+
+    pub fn file(&self) -> &PathBuf {
+        &self.file
+    }
+
+    pub fn start_line(&self) -> usize {
+        self.start_line
+    }
+
+    #[allow(dead_code)]
+    pub fn end_line(&self) -> usize {
+        self.end_line
     }
 }
 
