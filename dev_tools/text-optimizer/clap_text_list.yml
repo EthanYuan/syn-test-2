@@ -1,0 +1,60 @@
+- original: Runs ckb node
+  editable: Runs ckb node
+  metadata:
+    category: ClapAbout
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 118
+    end_line: 118
+- original: Allows any block assembler code hash and args
+  editable: Allows any block assembler code hash and args
+  metadata:
+    category: ClapHelp
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 123
+    end_line: 123
+- original: Skips checking the chain spec with the hash stored in the database
+  editable: Skips checking the chain spec with the hash stored in the database
+  metadata:
+    category: ClapHelp
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 129
+    end_line: 129
+- original: Overwrites the chain spec in the database with the present configured chain spec
+  editable: Overwrites the chain spec in the database with the present configured chain spec
+  metadata:
+    category: ClapHelp
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 134
+    end_line: 134
+- original: |-
+    This parameter specifies the hash of a block. \
+            When the height does not reach this block's height, the execution of the script will be disabled, \
+            that is, skip verifying the script content. \
+            \
+            It should be noted that when this option is enabled, the header is first synchronized to \
+            the highest currently found. During this period, if the assume valid target is found, \
+            the download of the block starts; If the assume valid target is not found or it's \
+            timestamp within 24 hours of the current time, the target will automatically become invalid, \
+            and the download of the block will be started with verify
+  editable: |-
+    This parameter specifies the hash of a block. \
+            When the height does not reach this block's height, the execution of the script will be disabled, \
+            that is, skip verifying the script content. \
+            \
+            It should be noted that when this option is enabled, the header is first synchronized to \
+            the highest currently found. During this period, if the assume valid target is found, \
+            the download of the block starts; If the assume valid target is not found or it's \
+            timestamp within 24 hours of the current time, the target will automatically become invalid, \
+            and the download of the block will be started with verify
+  metadata:
+    category: ClapHelp
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 139
+    end_line: 147
+- original: Start the built-in indexer service
+  editable: Start the built-in indexer service
+  metadata:
+    category: ClapHelp
+    file: /home/ethan/projects/rust/syn-test-2/src/main.rs
+    start_line: 152
+    end_line: 152

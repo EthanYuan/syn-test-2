@@ -1,0 +1,14 @@
+- original: 'Ethan says: {}'
+  editable: 'Ethan says: {}'
+  metadata:
+    category: StdOutput
+    file: /home/ethan/projects/rust/syn-test-2/crate2/src/lib.rs
+    start_line: 3
+    end_line: 3
+- original: Customizing consensus parameters for chain spec only works for dev chains.
+  editable: Customizing consensus parameters for chain spec only works for dev chains.
+  metadata:
+    category: StdError
+    file: /home/ethan/projects/rust/syn-test-2/crate2/src/lib.rs
+    start_line: 4
+    end_line: 4

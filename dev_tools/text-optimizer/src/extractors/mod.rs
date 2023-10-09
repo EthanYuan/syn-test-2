@@ -3,7 +3,7 @@ pub mod log_extractor;
 pub mod std_output_extractor;
 pub mod thiserror_extractor;
 
-use crate::{yaml_processor::save_yaml, CLAP_TEXT_FILE, LOG_TEXT_FILE};
+use crate::{yaml_processor::save_yaml, CLAP_TEXT_FILE, LOG_TEXT_FILE, STD_OUTPUT_TEXT_FILE};
 use clap_extractor::ClapExtractor;
 use log_extractor::LogExtractor;
 use std_output_extractor::StdOutputExtractor;
@@ -20,7 +20,7 @@ use std::{
 pub fn extract(project_root: PathBuf, output_dir: &PathBuf) {
     // extractors
     let mut log_extractor = LogExtractor::new();
-    let mut std_output_extractor = StdOutputExtractor;
+    let mut std_output_extractor = StdOutputExtractor::new();
     let mut thiserror_extractor = ThiserrorExtractor;
     let mut clap_extractor = ClapExtractor::new();
 
@@ -57,6 +57,11 @@ pub fn extract(project_root: PathBuf, output_dir: &PathBuf) {
         clap_extractor.get_text_list(),
     )
     .expect("save yaml");
+    save_yaml(
+        &output_dir.join(STD_OUTPUT_TEXT_FILE),
+        std_output_extractor.get_text_list(),
+    )
+    .expect("save yaml");
 }
 
 pub fn process_rs_files_in_src(
@@ -76,6 +81,7 @@ pub fn process_rs_files_in_src(
                     // reset file path
                     log_extractor.reset_analysis_path(&file_path);
                     clap_extractor.reset_analysis_path(&file_path);
+                    std_output_extractor.reset_analysis_path(&file_path);
 
                     let file_content = fs::read_to_string(&file_path).expect("Failed to read file");
                     if let Ok(syntax_tree) = syn::parse_file(&file_content) {

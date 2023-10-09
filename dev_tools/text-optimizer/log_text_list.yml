@@ -1,0 +1,35 @@
+- original: BlockFilter received exit signal, exit now
+  editable: BlockFilter received exit signal, exit now
+  metadata:
+    category: LogInfo
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 5
+    end_line: 5
+- original: Latest built block hash {:#x}
+  editable: Latest built block hash {:#x}
+  metadata:
+    category: LogDebug
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 7
+    end_line: 7
+- original: 'light-client: new chain root MMR with size = {}'
+  editable: 'light-client: new chain root MMR with size = {}'
+  metadata:
+    category: LogTrace
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 8
+    end_line: 8
+- original: Warning! {}!
+  editable: Warning! {}!
+  metadata:
+    category: LogWarn
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 10
+    end_line: 10
+- original: notify update_tx_pool_for_reorg error {}
+  editable: notify update_tx_pool_for_reorg error {}
+  metadata:
+    category: LogError
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 12
+    end_line: 12
