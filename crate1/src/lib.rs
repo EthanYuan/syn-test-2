@@ -10,7 +10,10 @@ pub fn add(left: usize, right: usize) -> usize {
     warn!("Warning! {}!", warn_description);
     let e = "pending";
     error!("notify update_tx_pool_for_reorg error {}", e);
-
+    debug!(
+        "Latest built block is main chain, start from {}",
+        1 + 1 + 2 + 5 + 6
+    );
     left + right
 }
 
