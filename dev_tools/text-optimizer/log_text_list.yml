@@ -33,3 +33,10 @@
     file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
     start_line: 12
     end_line: 12
+- original: Latest built block is main chain, start from {}
+  editable: Latest built block is main chain, start from {}
+  metadata:
+    category: LogDebug
+    file: /home/ethan/projects/rust/syn-test-2/crate1/src/lib.rs
+    start_line: 14
+    end_line: 14

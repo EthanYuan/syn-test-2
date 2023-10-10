@@ -12,3 +12,22 @@
     file: /home/ethan/projects/rust/syn-test-2/crate2/src/lib.rs
     start_line: 4
     end_line: 4
+- original: |-
+    For optimal performance, CKB wants to migrate the data into new format.\n\
+            You can use the old version CKB if you don't want to do the migration.\n\
+            We strongly recommended you to use the latest stable version of CKB, \
+            since the old versions may have unfixed vulnerabilities.\n\
+            Run `\"{}\" migrate -C \"{}\"` and confirm by typing \"YES\" to migrate the data.\n\
+            We strongly recommend that you backup the data directory before migration.
+  editable: |-
+    For optimal performance, CKB wants to migrate the data into new format.\n\
+            You can use the old version CKB if you don't want to do the migration.\n\
+            We strongly recommended you to use the latest stable version of CKB, \
+            since the old versions may have unfixed vulnerabilities.\n\
+            Run `\"{}\" migrate -C \"{}\"` and confirm by typing \"YES\" to migrate the data.\n\
+            We strongly recommend that you backup the data directory before migration.
+  metadata:
+    category: StdError
+    file: /home/ethan/projects/rust/syn-test-2/crate2/src/lib.rs
+    start_line: 6
+    end_line: 11
